@@ -68,18 +68,19 @@ The easiest path for a **Streamlit** app is **[Streamlit Community Cloud](https:
 
 ### Steps
 
-1. **Put the project on GitHub** (create a new repository, push this folder as the repo root).  
+1. **Put the project on GitHub.**  
+   - If the repo root is **`plg/`** (parent of this folder): Streamlit Cloud only reads **`requirements.txt` at the repo root**. That root file must install dependencies (this repo uses **`D:\plg\requirements.txt`** → `-r semantic-plagiarism-detection/requirements.txt`).  
    - Do **not** commit `.venv/` (it should stay in `.gitignore`).
 
 2. Go to **[share.streamlit.io](https://share.streamlit.io)** → sign in with GitHub → **New app**.
 
 3. Pick your **repository** and **branch** (usually `main`).
 
-4. Under **Advanced settings** → **Main file path**, set:
+4. Under **Advanced settings** → **Main file path**, set the path to **this** Streamlit file from the repo root, for example:
 
-   `frontend/streamlit_app.py`
+   **`semantic-plagiarism-detection/frontend/streamlit_app.py`**
 
-   (Streamlit Cloud defaults to a root `streamlit_app.py`; this project keeps the UI under `frontend/`, so this path is required.)
+   (If your GitHub repo root *is* the `semantic-plagiarism-detection` folder only, use **`frontend/streamlit_app.py`** instead.)
 
 5. **Deploy.** The first build can take **several minutes** (installs PyTorch, `sentence-transformers`, then downloads the model on first use). If the app **sleeps** after inactivity, the next visitor may wait again while the app wakes.
 
