@@ -1,0 +1,5 @@
+# Local: poll watcher avoids odd imports on some Windows setups.
+# Cloud: headless is normal for hosted Streamlit.
+[server]
+headless = true
+fileWatcherType = "poll"
